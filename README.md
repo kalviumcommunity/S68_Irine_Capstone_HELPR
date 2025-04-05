@@ -30,6 +30,8 @@ The project is developed using the MERN Stack:
 
 - Figma for UI/UX design (both low-fidelity and high-fidelity prototypes)
 
+- Deployment is done in Netlify (Frontend), Render (Backend)
+
 # Features Overview
 - Role-based sign-up/login system for volunteers and organizations
 
