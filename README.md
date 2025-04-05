@@ -53,7 +53,7 @@ The project is developed using the MERN Stack:
 
 # Day-by-Day Development Plan
 
-Week 1 – Planning & Design
+- Week 1 – Planning & Design
 
 The first few days i focused on planning the platform’s features and UI/UX. 
 
@@ -65,7 +65,7 @@ On Day 3 the GitHub repository has been set up with a README, project board and 
 
 By Day 4 folder structure for both frontend and backend will be finalized and basic setup will be completed.
 
-Week 2 – Backend Development
+- Week 2 – Backend Development
 
 On Day 5 backend setup begins with Express and MongoDB connection. 
 
@@ -75,7 +75,7 @@ Day 7–8 involve creating CRUD APIs for jobs and users, implementing JWT authen
 
 By Day 9–10 file/image upload support will be integrated and all backend features will be functional and deployed (using Render or similar service).
 
-Week 3 – Frontend Development
+- Week 3 – Frontend Development
 
 The React app will be initialized on Day 11 with routing and component structure set up. 
 
@@ -83,7 +83,7 @@ On Days 12–14 sign-up/login pages will be built for both user types, along wit
 
 Day 15–16 will focus on developing profile pages and the Post Job form. Conditional rendering based on user role will be implemented to manage dashboard functionality.
 
-Week 4 – Integration, Testing & Deployment
+- Week 4 – Integration, Testing & Deployment
 
 Day 17–18 will be used for API integration between frontend and backend. Form data will be connected to the database and UI components will be populated dynamically. 
 
