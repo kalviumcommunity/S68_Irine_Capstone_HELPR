@@ -4,12 +4,12 @@ const app = express();
 require('dotenv').config({ path: "src/Config/.env" });
 
 const port = process.env.PORT || 5000;
-const url = process.env.db_url;
+const url = process.env.DB_URL;
 
 app.use(express.json());
 
-const jobRoutes = require('./src/Routes/Jobroutes'); // add this
-app.use('/api/jobs', jobRoutes); // add this
+const jobRoutes = require('./src/Routes/Jobroutes');
+app.use('/api/jobs', jobRoutes); 
 
 app.listen(port, async () => {
     try {
