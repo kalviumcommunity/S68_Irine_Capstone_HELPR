@@ -30,14 +30,11 @@ router.post('/', async (req, res) => {
 });
 
 // PUT
-
 router.put('/:id', async (req, res) => {
-    const { title, description, location, postedBy } = req.body;
-
     try {
         const updatedJob = await Job.findByIdAndUpdate(
             req.params.id,
-            { title, description, location, postedBy },
+            req.body,
             { new: true, runValidators: true }
         );
 
@@ -51,5 +48,17 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+// DELETE 
+router.delete('/:id', async (req, res) => {
+    try {
+        const deletedJob = await Job.findByIdAndDelete(req.params.id);
+        if (!deletedJob) {
+            return res.status(404).json({ message: 'Job not found' });
+        }
+        res.status(200).json({ message: 'Job deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 module.exports = router;
