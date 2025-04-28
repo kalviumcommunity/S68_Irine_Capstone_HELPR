@@ -9,7 +9,16 @@ const url = process.env.DB_URL;
 app.use(express.json());
 
 const jobRoutes = require('./src/Routes/Jobroutes');
-app.use('/api/jobs', jobRoutes); 
+app.use('/api/jobs', jobRoutes);
+
+app.get('/', (req, res) => {
+    res.send('HELPR server is running!');
+});
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
 
 app.listen(port, async () => {
     try {
@@ -18,8 +27,4 @@ app.listen(port, async () => {
     } catch (error) {
         console.error(error);
     }
-});
-
-app.get('/', (req, res) => {
-    res.send('HELPR server is running!');
 });

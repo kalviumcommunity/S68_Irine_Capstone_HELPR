@@ -100,3 +100,165 @@ On Day 22 the full application will be deployed (frontend via Vercel/Netlify), a
 
 “Volunteering Made Simple.”
 
+
+
+## Create a GET request 
+
+Explanation of Task 5: GET API Implementation
+
+In this task I implemented a GET API endpoint that allows users to retrieve a list of available volunteer job postings from the database. Here's a breakdown of what was done:
+
+1. Database Setup:
+I set up a MongoDB database connection using Mongoose. The database will store information about volunteer jobs.
+
+The database URL is stored securely in the .env file to keep it private.
+
+2. Job Model:
+I created a Job schema using Mongoose to define the structure of a job posting. This includes fields like:
+
+title: The title of the job.
+
+description: Details about the job.
+
+location: Where the job is located.
+
+postedBy: The organization posting the job.
+
+datePosted: When the job was posted.
+
+3. GET API Route:
+I created a new route /api/jobs to handle GET requests. This route fetches all job postings from the MongoDB database and returns them as a JSON response.
+
+The route is public and does not require any authentication. It simply returns a list of jobs in the database.
+
+4. Testing:
+After starting the server, I tested the route using Postman or a browser to ensure it returns the job listings correctly.
+
+If no jobs are in the database, it will return an empty array [].
+
+This task is the first step towards building out the full functionality of the site, where users can retrieve job listings from different organizations.
+
+# Create a POST request
+
+ Explanation of Task 6: POST API Implementation
+In this task, I implemented a POST API that allows organizations to create new volunteer job postings and store them in the MongoDB database.
+
+ What I did:
+Created a POST Route:
+ 
+I built a new POST endpoint at /api/jobs to allow organizations to submit job listings.
+
+i set up a new file called jobRoutes.js to organize our job-related API routes.
+
+Connected Routes to the Server:
+
+I imported jobRoutes.js into server.js and mounted it on the path /api/jobs using app.use('/api/jobs', jobRoutes).
+
+This allows all job-related requests (like GET and POST) to go through the same route file.
+
+Handled Data Validation:
+
+I added simple validation to check that all required fields (title, description, location, and postedBy) are present in the incoming request before saving a job to the database.
+
+Saved Data to MongoDB:
+
+When a correct POST request is received, a new job posting is created and stored in MongoDB using the Mongoose model.
+
+Tested the API:
+
+I used Postman to test the POST request, sending job details in JSON format to the /api/jobs endpoint.
+
+After successful creation, we received a response with the newly created job data and a status code 201 Created.
+
+
+# Create a PUT request
+
+Explanation of Task 7: PUT API Implementation
+In this task, I implemented a PUT API that allows organizations to update an existing volunteer job posting stored in the MongoDB database.
+
+ What I did:
+Created a PUT Route:
+
+I added a new PUT endpoint at /api/jobs/:id in the jobRoutes.js file.
+
+This route accepts an id parameter in the URL, which identifies the job to be updated.
+
+Handled Data Updating:
+
+In the request body, I receive updated fields like title, description, location, and postedBy.
+
+I used Mongoose’s findByIdAndUpdate method to find the job by ID and update it in the database.
+
+I ensured that the updated data is returned by setting { new: true }.
+
+Error Handling:
+
+If the provided ID does not match any existing job, I return a 404 Not Found error.
+
+If there’s any server error during the update, I return a 500 Internal Server Error.
+
+Tested the API:
+
+I used Postman to send a PUT request to /api/jobs/:id with the updated job information.
+
+On a successful update, we received the updated job object and a 200 OK status.
+
+# Backend deploymentlink
+
+https://s68-irine-capstone-helpr.onrender.com
+
+# Create database schema 
+
+ Explanation of Task 9: Create Database Schema (Mongoose Model)
+In this task, I created a Mongoose schema for the Job data that defines how the job postings will be structured and stored in the MongoDB database.
+
+ What I did:
+Created a Mongoose Schema:
+
+I defined a schema for a Job posting using Mongoose’s Schema class.
+
+The schema includes the following fields:
+
+title: The title of the job (e.g., "Volunteer Helper")
+
+description: A description of the job role
+
+location: The location where the volunteer job will take place
+
+postedBy: The organization or person posting the job
+
+Ensured Data Validity:
+
+I marked all fields (title, description, location, postedBy) as required to ensure the data is complete before saving to the database.
+
+I also used trim: true to remove any leading or trailing whitespace in the input.
+
+Timestamps:
+
+I enabled timestamps: true to automatically track the creation and update time of each job posting in the database.
+
+Exported the Model:
+
+I used mongoose.model('Job', JobSchema) to create a Job model based on the schema and exported it for use in other parts of the application (like in routes).
+
+
+ # Database read and write performed
+
+ Explanation of Task 10: Database Read & Write Operations 
+
+Objective: 
+Demonstrated successful database interactions by implementing and testing:
+- Write Operations: Creating new volunteer job postings via `POST /api/jobs`
+- Read Operations: Fetching existing job listings via `GET /api/jobs`
+
+Key Components:  
+1. Mongoose Models:  
+   - Defined `Job` schema with fields: `title`, `description`, `location`, `postedBy`, `DatePosted`
+2. API Endpoints:
+   - Implemented CRUD routes in `jobRoutes.js`
+3. Testing:  
+   - Verified operations using:
+     - Postman requests (manual testing)
+     - Automated tests with Supertest (see `tests/db.test.js`)
+4. =MongoDB Atlas:  
+   - Confirmed data persistence in cloud database
