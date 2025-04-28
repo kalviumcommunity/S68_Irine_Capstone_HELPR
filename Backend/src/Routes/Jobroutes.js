@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Job = require('../Model/Job');
 
-// GET all jobs
+// GET 
 router.get('/', async (req, res) => {
     try {
         const jobs = await Job.find();
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// POST a new job
+// POST 
 router.post('/', async (req, res) => {
     const { title, description, location, postedBy } = req.body;
 
@@ -28,5 +28,28 @@ router.post('/', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+// PUT
+
+router.put('/:id', async (req, res) => {
+    const { title, description, location, postedBy } = req.body;
+
+    try {
+        const updatedJob = await Job.findByIdAndUpdate(
+            req.params.id,
+            { title, description, location, postedBy },
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedJob) {
+            return res.status(404).json({ message: 'Job not found' });
+        }
+
+        res.status(200).json(updatedJob);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 
 module.exports = router;
