@@ -11,6 +11,9 @@ app.use(express.json());
 const jobRoutes = require('./src/Routes/Jobroutes');
 app.use('/api/jobs', jobRoutes);
 
+const userRoutes = require('./src/Routes/Userroutes');
+app.use('/api/users', userRoutes); 
+
 app.get('/', (req, res) => {
     res.send('HELPR server is running!');
 });
