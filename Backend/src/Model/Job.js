@@ -15,7 +15,7 @@ const JobSchema = new mongoose.Schema({
     postedBy: {
         type: String, 
     },
-    datePosted: {
+    DatePosted: {
         type: Date,
         default: Date.now,
     },
